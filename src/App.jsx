@@ -10,6 +10,7 @@ function App() {
 
   const cardData = [
     {
+      id: 1,
       name: "Portatil",
       description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.",
       image: "/portatil2.png",
@@ -18,6 +19,7 @@ function App() {
       stock: 2,
     },
     {
+      id: 2,
       name: "Lavadora",
       description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.",
       image: "/lavadora.png",
@@ -26,6 +28,7 @@ function App() {
       stock: 14,
     },
     {
+      id: 3,
       name: "Television",
       description: "Cupidatat tempor ipsum veniam incididunt velit est.",
       image: "/television.png",
@@ -34,6 +37,7 @@ function App() {
       stock: 21,
     },
     {
+      id: 4,
       name: "Telefono",
       description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.",
       image: "/movil.png",
@@ -42,6 +46,7 @@ function App() {
       stock: 24,
     },
     {
+      id: 5,
       name: "Tablet",
       description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.",
       image: "/tablet.png",
@@ -50,9 +55,7 @@ function App() {
       stock: 12,
     }
   ]
-
   const buyData = []
-
 
   const [products, setProducts] = useState([]);
   const [buyList, setBuyList] = useState([]);
@@ -67,28 +70,44 @@ function App() {
     setBuyList(buyData);
   }, [])
 
+  const handleClick = (id) => {
+    const filterData = cardData.filter(data => data.id === id)
+
+    console.log(filterData);
+
+    setBuyList({ ...buyList, filterData })
+
+    console.log(buyList);
+  }
 
   return (
     <>
-      <h1>Productos Stock</h1>
-      <div className="card-container">
-        {/* recorre products */}
-        {products.map((product, index) => (
-          <Card
-            key={index}
-            cardId={index}
-            name={product.name}
-            description={product.description}
-            image={product.image}
-            price={product.price}
-            stock={product.stock}
-            discount={product.discount}
-          />
-        ))}
+      <div className='products-container'>
+        <h1>Productos Stock</h1>
+        <div className="card-container">
+          {/* recorre products */}
+          {products.map((product, index) => (
+            <Card
+              key={index}
+              id={product.id}
+              name={product.name}
+              description={product.description}
+              image={product.image}
+              price={product.price}
+              stock={product.stock}
+              discount={product.discount}
+              handleClick={handleClick}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="card-container">
-        <BuyList />
+      <div className="buylist-container">
+
+        <h1>Buy List</h1>
+        <div className='list-container'>
+
+        </div>
       </div>
     </>
 

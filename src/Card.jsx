@@ -1,6 +1,7 @@
 import React from "react"
+import BuyList from "./BuyList";
 
-function Card({ name, description, image, price, stock, discount, cardId }) {
+function Card({ id, name, description, image, price, stock, discount, handleClick }) {
 
   return (
     <>
@@ -10,7 +11,6 @@ function Card({ name, description, image, price, stock, discount, cardId }) {
             src="/discount.png"
             alt="Discount"
             style={{
-
               display: discount < 1 ? 'none' : 'content',
               maxHeight: '25px'
             }}
@@ -25,7 +25,6 @@ function Card({ name, description, image, price, stock, discount, cardId }) {
           <p>Precio: {price} €</p>
           <p style={{
             display: discount < 1 ? 'none' : 'content'
-
           }}
           >Precio con descuento: {price - price * discount / 100} €</p>
           {/* ternario para mostrar el color */}
@@ -45,12 +44,13 @@ function Card({ name, description, image, price, stock, discount, cardId }) {
             Quedan menos de 3 unidades
           </p>
         </div>
+
         <div
           className="cont-button"
           style={{}}
         >
           <button onClick={() => {
-            console.log(cardId)
+            handleClick(id)
           }}>Comprar</button>
         </div>
 
@@ -58,6 +58,5 @@ function Card({ name, description, image, price, stock, discount, cardId }) {
     </>
   )
 }
-
 
 export default Card
