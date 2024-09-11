@@ -1,23 +1,24 @@
 import React from "react"
-import BuyList from "./BuyList";
 
-function Card({ id, name, description, image, price, stock, discount, handleClick }) {
+function Card({ id, name, description, image, price, stock, discount, handleClick, }) {
 
   return (
     <>
       <div className="card">
-        <div className="cont-discount">
-          <img
-            src="/discount.png"
-            alt="Discount"
-            style={{
-              display: discount < 1 ? 'none' : 'content',
-              maxHeight: '25px'
-            }}
-          />
-        </div>
 
-        <img src={image} alt={name} className="card-image" />
+        <div>
+          <div className="cont-discount">
+            <img
+              src="/discount.png"
+              alt="Discount"
+              style={{
+                display: discount < 1 ? 'none' : 'content',
+                maxHeight: '25px'
+              }}
+            />
+          </div>
+          <img src={image} alt={name} className="card-image" />
+        </div>
 
         <div className="card-text">
           <h2>{name}</h2>
@@ -30,7 +31,7 @@ function Card({ id, name, description, image, price, stock, discount, handleClic
           {/* ternario para mostrar el color */}
           <p style={{
             color: stock < 20 ? 'red' : 'black',
-            display: stock < 3 ? 'none' : 'content'
+            display: stock < 3 ? 'none' : 'content',
           }}>
             Stock: {stock} unidades
           </p>
@@ -39,21 +40,17 @@ function Card({ id, name, description, image, price, stock, discount, handleClic
             fontWeight: 'bold',
             fontSize: '150%',
             border: 'solid, 2px, red',
-            display: stock > 3 ? 'none' : 'content'
+            display: stock > 3 ? 'none' : 'content',
+            textAlign: 'center'
           }}>
             Quedan menos de 3 unidades
           </p>
         </div>
-
-        <div
-          className="cont-button"
-          style={{}}
-        >
-          <button onClick={() => {
+        <div className="cont-button">
+          <button className="button" onClick={() => {
             handleClick(id)
           }}>Comprar</button>
         </div>
-
       </div>
     </>
   )

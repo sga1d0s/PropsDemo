@@ -1,0 +1,15 @@
+
+.buylist-container {
+  position: sticky;
+  top: 0; /* Se mantendrá pegado a la parte superior de la ventana cuando se desplace */
+  max-height: 100vh; /* Límite máximo de altura que puede ocupar (ajusta según necesites) */
+  overflow-y: auto; /* Permite el scroll si el contenido es mayor que la altura máxima */
+  background-color: white; /* Opcional: fondo para mayor visibilidad */
+  padding: 10px; /* Opcional: separa el contenido de los bordes */
+}
+
+.listitem-container{
+  padding: 10px;
+  display: flex;
+  justify-content:space-between;
+}

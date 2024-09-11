@@ -1,10 +1,17 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import Card from './Card'
-import BuyList from './BuyList'
+"use strict";
 
+// estados
+import { useEffect, useState } from 'react'
+
+// componentes
+import React from 'react'
+import Card from './Card'
+import ListItem from './ListItem'
+
+// estilos
 import './Card.css'
 import './App.css'
+import './ListItem.css'
 
 function App() {
 
@@ -70,14 +77,12 @@ function App() {
     setBuyList(buyData);
   }, [])
 
-  const handleClick = (id) => {
+  function handleClick(id) {
+    // filtra por id y guarda en 'filterData'
     const filterData = cardData.filter(data => data.id === id)
 
-    console.log(filterData);
-
-    setBuyList({ ...buyList, filterData })
-
-    console.log(buyList);
+    // prevBuyList parametro usado para mantener los datos y añadir nuevos
+    setBuyList(prevBuyList => [...prevBuyList, ...filterData]);
   }
 
   return (
@@ -103,10 +108,17 @@ function App() {
       </div>
 
       <div className="buylist-container">
-
         <h1>Buy List</h1>
         <div className='list-container'>
-
+          {buyList.map((item, index) => (
+            <ListItem
+              key={index}
+              id={item.id}
+              image={item.image}
+              name={item.name}
+              description={item.description}
+            />            
+          ))}
         </div>
       </div>
     </>
