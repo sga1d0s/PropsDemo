@@ -1,42 +1,97 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import Card from './Card'
+import BuyList from './BuyList'
 
 import './Card.css'
 import './App.css'
 
 function App() {
 
-  const datos = [
-    { name: "Portatil", description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.", image: "/public/portatil.jpeg", price: 200, stock: 10, },
-    { name: "Lavadora", description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.", image: "/public/lavadora.jpeg", price: 62, stock: 14, },
-    { name: "Television", description: "Cupidatat tempor ipsum veniam incididunt velit est.", image: "/public/television.jpeg", price: 772, stock: 21, },
-    { name: "Telefono", description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.", image: "/public/movil.jpeg", price: 25, stock: 24, },
-    { name: "Tablet", description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.", image: "/public/tablet.jpeg", price: 300, stock: 12, }
+  const cardData = [
+    {
+      name: "Portatil",
+      description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.",
+      image: "/portatil2.png",
+      price: 200,
+      discount: 20,
+      stock: 2,
+    },
+    {
+      name: "Lavadora",
+      description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.",
+      image: "/lavadora.png",
+      price: 62,
+      discount: 0,
+      stock: 14,
+    },
+    {
+      name: "Television",
+      description: "Cupidatat tempor ipsum veniam incididunt velit est.",
+      image: "/television.png",
+      price: 772,
+      discount: 20,
+      stock: 21,
+    },
+    {
+      name: "Telefono",
+      description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.",
+      image: "/movil.png",
+      price: 25,
+      discount: 0,
+      stock: 24,
+    },
+    {
+      name: "Tablet",
+      description: "Cupidatat tempor ipsum veniam incididunt velit est. Lorem occaecat ea ex exercitation consectetur esse laboris voluptate cillum minim nulla tempor incididunt irure.",
+      image: "/tablet.png",
+      price: 300,
+      discount: 20,
+      stock: 12,
+    }
   ]
 
+  const buyData = []
+
+
   const [products, setProducts] = useState([]);
+  const [buyList, setBuyList] = useState([]);
 
   useEffect(() => {
-    setProducts(datos);
+    /* setea products con datos */
+    setProducts(cardData);
   }, [])
+
+  useEffect(() => {
+    /* setea products con datos */
+    setBuyList(buyData);
+  }, [])
+
 
   return (
     <>
       <h1>Productos Stock</h1>
       <div className="card-container">
-        {datos.map((producto, index) => (
+        {/* recorre products */}
+        {products.map((product, index) => (
           <Card
             key={index}
-            name={producto.name}
-            description={producto.description}
-            image={producto.image}
-            price={producto.price}
-            stock={producto.stock}
+            cardId={index}
+            name={product.name}
+            description={product.description}
+            image={product.image}
+            price={product.price}
+            stock={product.stock}
+            discount={product.discount}
           />
         ))}
       </div>
+
+      <div className="card-container">
+        <BuyList />
+      </div>
     </>
+
   )
 }
 
