@@ -5,7 +5,6 @@ function Card({ id, name, description, image, price, stock, discount, handleClic
   return (
     <>
       <div className="card">
-
         <div>
           <div className="cont-discount">
             <img
@@ -27,7 +26,7 @@ function Card({ id, name, description, image, price, stock, discount, handleClic
           <p style={{
             display: discount < 1 ? 'none' : 'content'
           }}
-          >Precio con descuento: {price - price * discount / 100} €</p>
+          >Precio descuento: {price - price * discount / 100} €</p>
           {/* ternario para mostrar el color */}
           <p style={{
             color: stock < 20 ? 'red' : 'black',

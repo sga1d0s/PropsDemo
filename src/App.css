@@ -5,8 +5,12 @@
   padding: 2rem;
 }
 
+.titulo-container{
+  text-align: center;
+}
+
 .card {
-  padding: 2em;
+  padding: 1em;
   background: #a41313;
   background: linear-gradient(270deg, #a41313 0%, #ffffff 80%);
   background: -webkit-linear-gradient(270deg, #a41313 0%, #ffffff 80%);

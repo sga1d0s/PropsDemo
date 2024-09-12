@@ -1,6 +1,6 @@
 import React from "react";
 
-function ListItem({ id, image, name, description }) {
+function ListItem({ id, image, name, description, quantity }) {
 
   return (
     <>
@@ -15,21 +15,26 @@ function ListItem({ id, image, name, description }) {
             }}
           />
         </div>
-        <div className="listitem-text-container" style={{marginRight: '5px'}}>
+        <div className="listitem-text-container" style={{ marginRight: '5px' }}>
           <div>{name}</div>
           {/* <p>{description}</p> */}
 
         </div>
-        <div 
+        <div
           className="listitem-quantity-container"
         >
-          {/* <p>{quantity}</p> */}
-          <input type="number" id="tentacles" name="tentacles" min="0" max="100"
-          style={{
-            width:"2em",
+          <input 
+          type="number" 
+          id="tentacles" 
+          name="tentacles" 
+          min="0" 
+          max="100"
+          value={quantity}
+            style={{
+              width: "2em",
             }} />
-
         </div>
+        <div>{quantity}</div>
 
       </div>
     </>

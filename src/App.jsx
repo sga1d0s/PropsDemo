@@ -15,7 +15,8 @@ import './ListItem.css'
 
 function App() {
 
-  const cardData = [
+  // array de objetos con los datos de los productos
+  const prodData = [
     {
       id: 1,
       name: "Portatil",
@@ -62,6 +63,8 @@ function App() {
       stock: 12,
     }
   ]
+
+  // array que inicializa los datos de buyData ???????????????????
   const buyData = []
 
   const [products, setProducts] = useState([]);
@@ -69,7 +72,7 @@ function App() {
 
   useEffect(() => {
     /* setea products con datos */
-    setProducts(cardData);
+    setProducts(prodData);
   }, [])
 
   useEffect(() => {
@@ -79,16 +82,30 @@ function App() {
 
   function handleClick(id) {
     // filtra por id y guarda en 'filterData'
-    const filterData = cardData.filter(data => data.id === id)
+    const filterData = prodData.filter(data => data.id === id)
+    filterData.quantity = 1;
 
-    // prevBuyList parametro usado para mantener los datos y añadir nuevos
-    setBuyList(prevBuyList => [...prevBuyList, ...filterData]);
+    console.log(filterData);
+
+    const exist = buyList.some(data => data.id === id)
+
+    // comprueba que no esté en la lista previa
+    if (!exist) {
+      /* añadir item */
+      // prevBuyList parametro usado para mantener los datos y añadir nuevos
+      setBuyList(prevBuyList => [...prevBuyList, ...filterData]);
+
+    } else {
+      /* sumar 1 a quantity */
+    }
+
+
   }
 
   return (
     <>
       <div className='products-container'>
-        <h1>Productos Stock</h1>
+        <h1 className='titulo-container'>Productos Stock</h1>
         <div className="card-container">
           {/* recorre products */}
           {products.map((product, index) => (
@@ -116,13 +133,14 @@ function App() {
               id={item.id}
               image={item.image}
               name={item.name}
-              description={item.description}
-            />            
+              // description={item.description}
+              quantity={item.quantity}
+            />
           ))}
+
         </div>
       </div>
     </>
-
   )
 }
 
